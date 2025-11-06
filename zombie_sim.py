@@ -1005,7 +1005,7 @@ class ZombieUI:
 # ------------------
 
 def run_demo():
-    sim = ZombieSim(n_agents=85, initial_zombies=0)  # start with 0 to test pre-run behavior
+    sim = ZombieSim(n_agents=85, initial_zombies=16)  # start with 0 to test pre-run behavior
     _ = ZombieUI(sim)
     plt.tight_layout()
     plt.show()
