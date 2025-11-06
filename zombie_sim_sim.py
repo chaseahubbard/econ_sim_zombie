@@ -126,7 +126,7 @@ EXPERIMENTS_OVERRUN: List[Tuple[str, Dict[str, Any]]] = [
                                        "initial_zombies": 12}),
     ("Overrun: Resource Stress + Spread", {"beta": 0.03, "rho": 0.02, "alpha": 0.001, "kappa": 0.0, "sigma": 0.0,
                                             "cure_rate": 0.0, "neutralize_rate": 0.0, "human_speed": 0.10, "flee_speed": 0.14,
-                                            "zombie_speed": 0.24, "daily_food_need": 1.6, "carry_capacity": 8,
+                                            "zombie_speed": 0.24, "daily_food_need": 1.08, "carry_capacity": 8,
                                             "initial_zombies": 12}),
     ("Overrun: Tiny Human Edge Removed", {"beta": 0.026, "rho": 0.018, "alpha": 0.0, "kappa": 0.0, "sigma": 0.0,
                                            "cure_rate": 0.0, "neutralize_rate": 0.0, "human_speed": 0.11, "zombie_speed": 0.26,
@@ -140,7 +140,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "bite_distance": 0.45, "notice_radius": 5.0,
       "human_speed": 0.22, "flee_speed": 0.35, "zombie_speed": 0.10,
       "food_regrow_chance": 0.55, "spawn_chance_per_step": 0.35,
-      "carry_capacity": 18, "daily_food_need": 0.85,
+      "carry_capacity": 18, "daily_food_need": 0.085,
       "initial_zombies": 2}),
 
     ("Humans Win: Contact Avoidance",
@@ -150,7 +150,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "human_speed": 0.26, "flee_speed": 0.38, "zombie_speed": 0.09,
       "hospital_capacity": 20, "cure_rate": 0.20, "neutralize_rate": 0.18,
       "food_regrow_chance": 0.6, "spawn_chance_per_step": 0.3,
-      "carry_capacity": 20, "daily_food_need": 0.9,
+      "carry_capacity": 20, "daily_food_need": 0.08,
       "initial_zombies": 1}),
 
     ("Humans Win: Hospital Surge + Traps",
@@ -160,7 +160,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "human_speed": 0.24, "flee_speed": 0.36, "zombie_speed": 0.12,
       "bite_distance": 0.5, "notice_radius": 4.5,
       "food_regrow_chance": 0.5, "spawn_chance_per_step": 0.35,
-      "carry_capacity": 16, "daily_food_need": 0.95,
+      "carry_capacity": 16, "daily_food_need": 0.085,
       "initial_zombies": 3}),
 
     ("Humans Win: Impulsive Strikes",
@@ -171,7 +171,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "human_speed": 0.23, "flee_speed": 0.34, "zombie_speed": 0.12,
       "bite_distance": 0.5, "notice_radius": 4.0,
       "food_regrow_chance": 0.55, "spawn_chance_per_step": 0.32,
-      "carry_capacity": 18, "daily_food_need": 0.9,
+      "carry_capacity": 18, "daily_food_need": 0.08,
       "initial_zombies": 3}),
 
     ("Humans Win: Resource Abundance (less exposure)",
@@ -180,8 +180,8 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "hospital_capacity": 18, "cure_rate": 0.25, "neutralize_rate": 0.20,
       "human_speed": 0.22, "flee_speed": 0.34, "zombie_speed": 0.11,
       "bite_distance": 0.5, "notice_radius": 4.2,
-      "food_regrow_chance": 0.7, "spawn_chance_per_step": 0.45,  # fewer trips needed
-      "carry_capacity": 22, "daily_food_need": 0.85,
+      "food_regrow_chance": 0.9, "spawn_chance_per_step": 0.95,  # fewer trips needed
+      "carry_capacity": 22, "daily_food_need": 0.008,
       "initial_zombies": 2}),
 
     ("Humans Win: Low Progression + Capture",
@@ -191,7 +191,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "human_speed": 0.24, "flee_speed": 0.36, "zombie_speed": 0.11,
       "bite_distance": 0.45, "notice_radius": 5.0,
       "food_regrow_chance": 0.55, "spawn_chance_per_step": 0.35,
-      "carry_capacity": 18, "daily_food_need": 0.9,
+      "carry_capacity": 18, "daily_food_need": 0.08,
       "initial_zombies": 3}),
 
     ("Humans Win: Zero Resurrection + Counter-bite",
@@ -202,7 +202,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "human_speed": 0.24, "flee_speed": 0.36, "zombie_speed": 0.12,
       "bite_distance": 0.48, "notice_radius": 4.8,
       "food_regrow_chance": 0.55, "spawn_chance_per_step": 0.34,
-      "carry_capacity": 18, "daily_food_need": 0.9,
+      "carry_capacity": 18, "daily_food_need": 0.08,
       "initial_zombies": 2}),
 
     ("Humans Win: Quarantine + Release (rehab)",
@@ -212,7 +212,7 @@ EXPERIMENTS_HUMAN_SURVIVE = [
       "human_speed": 0.23, "flee_speed": 0.35, "zombie_speed": 0.11,
       "bite_distance": 0.48, "notice_radius": 4.5,
       "food_regrow_chance": 0.6, "spawn_chance_per_step": 0.32,
-      "carry_capacity": 20, "daily_food_need": 0.9,
+      "carry_capacity": 20, "daily_food_need": 0.08,
       "initial_zombies": 3}),
 ]
 EXPERIMENTS: List[Tuple[str, Dict[str, Any]]] = EXPERIMENTS_BASE + EXPERIMENTS_OVERRUN + EXPERIMENTS_HUMAN_SURVIVE
@@ -310,7 +310,7 @@ def make_figures(results: List[Dict[str, Any]], steps: int):
     ax.set_xticks(x); ax.set_xticklabels(labels, rotation=25, ha='right')
     ax.set_ylabel('Agents'); ax.legend()
 
-    fig2.suptitle(f"Summary after {steps} steps per run — arranged 2×2 with extra spacing")
+    fig2.suptitle(f"Summary after {steps} steps per run")
 
     return fig1, fig2
 
@@ -382,8 +382,97 @@ class ScrollableFigureApp:
 # ------------------------------------------------------------
 # Runner
 # ------------------------------------------------------------
+import os, json, csv, time, pathlib, pickle
 
-def run_all_and_plot(experiments=None, steps=210, n_agents=85, initial_zombies=3, seed=7, use_scroll_viewer=True):
+def _tsdir(prefix="batch_results"):
+    stamp = time.strftime("%Y%m%d-%H%M%S")
+    out = pathlib.Path(prefix) / stamp
+    out.mkdir(parents=True, exist_ok=True)
+    return out
+
+def save_results(results, steps, fig1=None, fig2=None, outdir=None):
+    """
+    Saves:
+      - results_summary.csv  (one row per run with final metrics)
+      - results_summary.json (same as CSV, plus overrides)
+      - per-run history/avgs as .npz files
+      - figures: per_run_timeseries.(png|pdf), summary_bars.(png|pdf)
+      - results.pkl (raw Python object for quick reload)
+    """
+    outdir = pathlib.Path(outdir or _tsdir())
+    outdir.mkdir(parents=True, exist_ok=True)
+
+    # ---------- (A) tabular summary ----------
+    summary_rows = []
+    for r in results:
+        row = {
+            "label": r["label"],
+            "steps": steps,
+            "S": r["final"]["S"],
+            "I": r["final"]["I"],
+            "Z": r["final"]["Z"],
+            "Q": r["final"]["Q"],
+            "R": r["final"]["R"],
+            "humans": r["final"]["humans"],
+            "zombies": r["final"]["zombies"],
+            "total_wealth": r["final"]["total_wealth"],
+            "unique_infected": r["final"]["unique_infected"],
+            "overrides_effective": json.dumps(r["overrides_effective"], ensure_ascii=False),
+        }
+        summary_rows.append(row)
+
+    csv_path = outdir / "results_summary.csv"
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(summary_rows[0].keys()))
+        w.writeheader()
+        w.writerows(summary_rows)
+
+    json_path = outdir / "results_summary.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(summary_rows, f, indent=2)
+
+    # ---------- (B) per-run time series (history + avgs) ----------
+    runs_dir = outdir / "runs_npz"
+    runs_dir.mkdir(exist_ok=True)
+    for r in results:
+        base = r["label"].replace(" ", "_").replace("/", "-")
+        npz_path = runs_dir / f"{base}.npz"
+
+        # Store overrides as UTF-8 bytes (NumPy 2.0-compatible)
+        overrides_bytes = json.dumps(r["overrides_effective"]).encode("utf-8")
+
+        np.savez_compressed(
+            npz_path,
+            history_S=np.array(r["history"]["S"]),
+            history_I=np.array(r["history"]["I"]),
+            history_Z=np.array(r["history"]["Z"]),
+            history_Q=np.array(r["history"]["Q"]),
+            history_R=np.array(r["history"]["R"]),
+            avgs_food=np.array(r["avgs"]["food"]),
+            avgs_supplies=np.array(r["avgs"]["supplies"]),
+            avgs_wealth=np.array(r["avgs"]["wealth"]),
+            label=np.array(r["label"]),      # plain string is fine
+            overrides=overrides_bytes        # <-- bytes, replaces np.string_
+        )
+
+    # ---------- (C) figures ----------
+    figs_dir = outdir / "figures"
+    figs_dir.mkdir(exist_ok=True)
+    if fig1 is not None:
+        fig1.savefig(figs_dir / "per_run_timeseries.png", dpi=150, bbox_inches="tight")
+        fig1.savefig(figs_dir / "per_run_timeseries.pdf", bbox_inches="tight")
+    if fig2 is not None:
+        fig2.savefig(figs_dir / "summary_bars.png", dpi=150, bbox_inches="tight")
+        fig2.savefig(figs_dir / "summary_bars.pdf", bbox_inches="tight")
+
+    # ---------- (D) raw python object for quick reload ----------
+    with open(outdir / "results.pkl", "wb") as f:
+        pickle.dump({"steps": steps, "results": results}, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+    print(f"[saved] {outdir}")
+    return str(outdir)
+
+def run_all_and_plot(experiments=None, steps=200, n_agents=85, initial_zombies=3, seed=7, use_scroll_viewer=True, save_dir=None):
     if experiments is None:
         experiments = EXPERIMENTS
 
@@ -393,6 +482,8 @@ def run_all_and_plot(experiments=None, steps=210, n_agents=85, initial_zombies=3
         results.append(r)
 
     fig1, fig2 = make_figures(results, steps)
+
+    outdir = save_results(results, steps, fig1=fig1, fig2=fig2, outdir=save_dir)
 
     if use_scroll_viewer:
         app = ScrollableFigureApp([
@@ -404,6 +495,7 @@ def run_all_and_plot(experiments=None, steps=210, n_agents=85, initial_zombies=3
         # Fall back to standard plt.show() for both figures
         plt.show()
 
+    return outdir
 
 if __name__ == "__main__":
     run_all_and_plot()
